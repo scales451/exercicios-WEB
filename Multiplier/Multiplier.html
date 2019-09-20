@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" type="text/css" href="Multiplier.css">
+  <meta charset="utf-8">
+  <title>Multiplier</title>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+
+<body>
+<div id="box">
+  <p id="welcome">Bem-vindo ao Multiplier!</p>
+  <p id="grau">Selecione o grau de dificuldade do exercício</p>
+  <form id="box1">
+  
+    <input type="radio" name="dificuldade" value="1d X 1d" id="1d X 1d">
+    <label for="1d X 1d">1d X 1d</label>
+  
+    <input type="radio" name="dificuldade" value="2d X 1d" id="2d X 1d">
+    <label for="2d X 1d">2d X 1d</label>
+  
+    <input type="radio" name="dificuldade" value="2d X 2d" id="2d X 2d">
+    <label for="2d X 2d">2d X 2d</label>
+  </form>
+
+  <p id="quantidade">Selecione a quantidade de questões</p>
+
+  <form id="box2">
+  
+    <input type="radio" name="questoes" value=1 id="1">
+    <label for="1">1</label>
+  
+    <input type="radio" name="questoes" value=2 id="2">
+    <label for="2">2</label>
+  
+    <input type="radio" name="questoes" value=3 id="3">
+    <label for="3">3</label>
+
+    <input type="radio" name="questoes" value=4 id="4">
+    <label for="4">4</label>
+
+    <input type="radio" name="questoes" value=5 id="5">
+    <label for="5">5</label>
+
+    <input type="radio" name="questoes" value=6 id="6">
+    <label for="6">6</label>
+
+    <input type="radio" name="questoes" value=7 id="7">
+    <label for="7">7</label>
+
+    <input type="radio" name="questoes" value=8 id="8">
+    <label for="8">8</label>
+
+    <input type="radio" name="questoes" value=9 id="9">
+    <label for="9">9</label>
+
+    <input type="radio" name="questoes" value=10 id="10">
+    <label for="10">10</label>
+  
+  </form>
+
+  <button type="button" id="treino">Começar treino</button>
+  <button type="button" id="reconfigurar">Reconfigurar</button>
+  <button type="button" id="submeter">Submeter</button>
+  <button type="button" id="finalizar">Finalizar</button>
+  <div id="pergunta"></div>
+  <input  type="text"   id="campo">
+  <button type="button" id="proxima">Próxima questão</button>
+  <div id="relatorio"></div>
+
+</div>
+
+<script>
+var resultado = 0;
+var quant = 0;
+var perguntaAtual = 0;
+var acertos = 0;
+var erros = 0;
+var pulos = 0;
+var diff = "";
+var n1 = 0;
+var n2 = 0;
+
+/*function exibeRelatorio()
+{
+  $("#relatorio").html("Relatório final Você acertou " + acertos + " questões Você errou " + erros " questões");
+}*/
+
+function exibeDificuldade()
+{
+  $("#grau").html("Dificuldade escolhida: " + $("input:radio[name=dificuldade]:checked").val() );
+  diff = $("input:radio[name=dificuldade]:checked").val();
+  $("#box1").hide();
+}
+
+function exibeQuantidade()
+{
+  $("#quantidade").html("Resolvendo " + $("input:radio[name=questoes]:checked").val() + " questões");
+  quant = $("input:radio[name=questoes]:checked").val();
+  $("#box2").hide();
+}
+
+function reconfigura()
+{
+  $("#box1").show();
+  $("#box2").show();
+  $("#grau").html("Selecione o grau de dificuldade do exercício");
+  $("#quantidade").html("Selecione a quantidade de questões");
+}
+
+function criaPergunta()
+{
+  $("#submeter").html("Submeter");
+  $("#proxima").hide();
+  $("#treino").hide();
+  $("#reconfigurar").hide();
+  $("#finalizar").show();
+  $("#submeter").show();
+  $("#box1").hide();
+  $("#box2").hide();
+  $("#campo").show();
+
+  if (diff == '1d X 1d')
+  {
+      n1 = Math.floor(Math.random() * 10 + 1);
+      n2 = Math.floor(Math.random() * 10 + 1);
+  }
+
+  if (diff == '2d X 1d')
+  {
+      n1 = Math.floor(Math.random() * 100 + 1);
+      n2 = Math.floor(Math.random() * 10 + 1);
+  }
+
+  if (diff == '2d X 2d')
+  {
+      n1 = Math.floor(Math.random() * 100 + 1);
+      n2 = Math.floor(Math.random() * 100 + 1);
+  }
+  $("#pergunta").html(n1 + " X " + n2 + " =");
+}
+
+function verificaResposta()
+{
+  resultado = $("#campo").val();
+  if (resultado != n1 * n2)
+  {
+      $("#submeter").html("Hmmm!! O valor correto é " + n1 * n2 + "!!");
+      erros++;
+      perguntaAtual++;
+  }
+  else
+  {
+      $("#submeter").html("Parabéns!! Você acertou!!");
+      acertos++;
+      perguntaAtual++;
+  }
+  if (quant != perguntaAtual)
+  {
+      $("#proxima").show();
+  }
+  
+}
+
+$("input:radio[name=dificuldade]").on( "click", function() {
+     exibeDificuldade();
+});
+
+$("input:radio[name=questoes]").on( "click", function() {
+     exibeQuantidade();
+});
+
+$("#treino").click(function(){
+     criaPergunta();
+});
+
+$("#submeter").click(function(){
+     verificaResposta();
+});
+
+$("#proxima").click(function(){
+     criaPergunta();
+});
+
+$("#reconfigurar").click(function(){
+     reconfigura();
+});
+
+$("#finalizar").click(function(){
+     //exibeRelatorio();
+});
+</script>
+ 
+</body>
+</html>

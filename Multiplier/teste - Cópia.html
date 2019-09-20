@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+	<head>
+		<meta http-equiv="Content-Language" content="pt-br">
+		<style type="text/css">
+			button {
+    					background-color: #4CAF50;
+    					border: none;
+   	 					color: white;
+    					padding: 15px 32px;
+    					text-align: center;
+    					text-decoration: none;
+    					display: inline-block;
+    					font-size: 16px;
+    					margin: 4px 2px;
+    					cursor: pointer;
+					}
+		</style>
+		<script type="text/javascript">
+			function multiplica(dificuldade)
+			{
+				var tentativas = 0;
+				var acertos = 0;
+				var opc;
+				do
+				{
+					if(dificuldade=='fácil')
+					{
+						var n1 = Math.floor(Math.random() * 10 + 1);
+						var n2 = Math.floor(Math.random() * 10 + 1);
+					}
+					if(dificuldade=='média')
+					{
+						var n1 = Math.floor(Math.random() * 100 + 1);
+						var n2 = Math.floor(Math.random() * 10 + 1);
+					}
+					if(dificuldade=='difícil')
+					{
+						var n1 = Math.floor(Math.random() * 100 + 1);
+						var n2 = Math.floor(Math.random() * 100 + 1);
+					}
+					var resultado = window.prompt("Qual o produto de " + n1 + " e " + n2 + "?");
+					if(resultado != n1 * n2)
+					{
+						alert("Resposta errada! O resultado é: " + n1 * n2);
+						tentativas++;
+						opc = window.prompt("Deseja continuar? (1 = Sim / 0 = Não)");
+					}
+					else
+					{
+						alert("Correto!");
+						tentativas++;
+						acertos++;
+						opc = window.prompt("Deseja continuar? (1 = Sim / 0 = Não)");
+					}
+				}   while(opc != 0);
+				alert("Número de acertos: " + acertos + " Número de tentativas: " + tentativas + " Você acertou " + ( (acertos * 100) / tentativas) + "% das questões!");
+			}
+		</script>
+	</head>
+
+	<body>
+			 <h1>Teste de multiplicação</h1>
+			 <p>Escolha uma dificuldade: </p>
+			 <button onclick="multiplica('fácil')">Fácil</button> 
+			 <button onclick="multiplica('média')" style="background-color: #d6961c;">Média</button>
+			 <button onclick="multiplica('difícil')" style="background-color: #792736">Difícil</button>
+	</body>
+</html>

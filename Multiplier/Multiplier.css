@@ -1,0 +1,118 @@
+#treino
+{
+	background-color: #98e28c;
+    border: none;
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+#reconfigurar
+{
+	background-color: #98e28c;
+    border: none;
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+#submeter
+{
+	background-color: #98e28c;
+    border: none;
+    padding: 10px 10px;
+    text-align: center;
+    display: none;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+#finalizar
+{
+	background-color: #98e28c;
+    border: none;
+    padding: 10px 10px;
+    text-align: center;
+    display: none;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+#proxima
+{
+    background-color: #98e28c;
+    border: none;
+    padding: 10px 10px;
+    text-align: center;
+    display: none;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+#campo
+{
+	display: none;
+}
+
+#box
+{
+	background-color: #598fe5;
+	padding: 50px;
+}
+
+#welcome
+{
+	background-color: #8cb3f2;
+	padding: 10px;
+	font-size: 20px;
+}
+
+#grau
+{
+	background-color: #f2c98c;
+	padding: 10px;
+	font-size: 20px;
+}
+
+#quantidade
+{
+	background-color: #f2c98c;
+	padding: 10px;
+	font-size: 20px;
+}
+
+#box1
+{
+	background-color: #8cb3f2;
+	padding: 20px;
+	font-size: 20px;
+}
+
+#box2
+{
+	background-color: #8cb3f2;
+	padding: 20px;
+	font-size: 20px;
+}
+
+#pergunta
+{
+	font-size: 30px;
+}
+
+#relatorio
+{
+    font-size: 30px;
+}
